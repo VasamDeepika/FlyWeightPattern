@@ -15,19 +15,19 @@ public class PlayerController : MonoBehaviour {
         animator = GetComponentInChildren<Animator>();
         animator.SetBool("Idling", true);
     }
-	
+
     // Update is called once per frame
-	void FixedUpdate () {
-	
+    void FixedUpdate() {
+
         float translation = Input.GetAxis("Vertical") * speed;
         float rotation = Input.GetAxis("Horizontal") * rotationSpeed;
         translation *= Time.deltaTime;
         rotation *= Time.deltaTime;
-        Quaternion turn = Quaternion.Euler(0f,rotation,0f);
+        Quaternion turn = Quaternion.Euler(0f, rotation, 0f);
         rb.MovePosition(rb.position + this.transform.forward * translation);
         rb.MoveRotation(rb.rotation * turn);
 
-        if(translation != 0) 
+        if (translation != 0)
         {
             animator.SetBool("Idling", false);
         }
@@ -43,6 +43,4 @@ public class PlayerController : MonoBehaviour {
         }
 
     }
-
-    
 }
